@@ -19,6 +19,7 @@ import Profile from "./components/Profile";
 const AppLayoutComponent = () => {
     return (
         <div className="app">
+            
             {/* so my header footer is constant */}
             {/* I want middle of the page keep on changing */}
             <Header />
