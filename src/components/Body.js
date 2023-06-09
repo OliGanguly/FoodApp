@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GET_RESTAURANTS_LIST, resList } from "../utils/constants";
 import RestroCard from "./RestroCard";
 import axios from "axios";
 import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useOnline from "../Hooks/useOnline";
+import UserContext from "../context/UserContext";
+
 // import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [allRestros, setAllRestaurants] = useState([]);
   const [filterRestros, setFilteredRestaurants] = useState([]);
   const [searchedRes, setSearchedRes] = useState("")
+  const {user,setUser}=useContext(UserContext);
   useEffect(() => {
     getRestaurants()
   }, []);
@@ -50,6 +53,19 @@ if(!isonline){
             const data=filterData(e.target.value,allRestros)
             setFilteredRestaurants(data)
           }}
+        />
+         <input
+          className="searchTextbox"
+          type="text"
+          placeholder="Filter Out Restaurant 🔍"
+          value={user.name}
+          onChange={(e)=>{
+            setUser({
+              ...user,
+              name:e.target.value
+            })
+          }}
+          
         />
         
       </div>

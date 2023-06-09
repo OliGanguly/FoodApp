@@ -3,13 +3,13 @@ import React from 'react';
 // import Profile from './Profile';
 import ProfileClass from './ProfileClass';
 import { render } from 'react-dom';
+import UserContext from "../context/UserContext";
 
 
 class About extends React.Component{
     constructor(props){
         super(props)
         // console.log("parent-constructor") 
-        
     }
      componentDidMount(){
         // console.log("parent-componentDidMount")
@@ -17,13 +17,20 @@ class About extends React.Component{
     render(){
         // console.log("parent-render")
         return (
-                    <div>
-                        <h1>About Us</h1>
+                    <div style={{
+                        padding:"10px"
+                    }}>
+                        
                         {/* ways to render children */}
                         {/* childerns renderd inside outlet which create inside parent and for profile parent is about */}
                         {/* <Outlet/> */}
                         {/* <Profile/> */}
                         <ProfileClass name="Oli class first"/>
+                        {/* we dont have useContext hook here in class comp so we use it as a component */}
+                        <UserContext.Consumer>
+                            {/* takes a jsx then func has value of whatever the value of the context */}
+                            {({user})=><p>{user.name}-{user.email}</p>}
+                        </UserContext.Consumer>
                         {/* <ProfileClass name="Oli class second"/> */}
                     </div>
                 );

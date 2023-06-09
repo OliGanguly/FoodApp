@@ -33,14 +33,12 @@ class ProfileClass extends React.Component {
      
         return <>
             {/* <h1>Class Comp name:{this.props.name}</h1> */}
-            <img src={this.state.userInfo.avatar_url}/>
-            <h1>{this.state.userInfo.login}</h1>
-            {/* <button onClick={() => {
-                //we do not mutate state directlu
-                this.setState({
-                    count: this.state.count + 1
-                })
-            }}>CLICK</button> */}
+            <img  style={{width:"200px",height:"200px",borderRadius:"50%"}} src={this.state.userInfo.avatar_url}/>
+           <div>
+           <a href={this.state.userInfo.html_url}>Github</a>
+           </div>
+<h1>{this.state.userInfo.login}</h1>
+            
         </>
     }
 }
